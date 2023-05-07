@@ -28,7 +28,7 @@ export const App = () => {
           toast.error('Sorry. There are no images ... 😭');
           return;
         }
-        setImages(image => [...image, ...hits]);
+        setImages(image => [...image, ...filterSetImages(hits)]);
         setShowLoadMoreBtn(page < Math.ceil(totalHits / 12));
         if (page >= Math.ceil(totalHits / 12))
           toast.error(
@@ -49,6 +49,13 @@ export const App = () => {
     setImages([]);
     setShowLoadMoreBtn(false);
     setIsLoading(false);
+  };
+
+  const filterSetImages = images => {
+    const array = images.map(({ id, webformatURL, tags, largeImageURL }) => {
+      return { id, webformatURL, tags, largeImageURL };
+    });
+    return array;
   };
 
   const scrollOnMoreButton = () => {

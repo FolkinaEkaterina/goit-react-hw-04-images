@@ -19,9 +19,9 @@ const ImageGallery = ({ onCardClick, images }) => {
 };
 
 ImageGallery.propTypes = {
-  image: PropTypes.arrayOf(
+  images: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ),
 };
